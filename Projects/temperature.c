@@ -1,7 +1,8 @@
 #include <stdio.h>
-#include<ctype.h>
+#include <ctype.h>
 
-int main(){
+int main()
+{
 
     printf("\nWelcome to the Celsius <-> Farenheit!");
 
@@ -9,7 +10,7 @@ int main(){
     float temperature;
 
     printf("\nType (F) for Farenheit and (C) for Ceusius: ");
-    
+
     int x = 1;
     while (x)
     {
@@ -26,7 +27,8 @@ int main(){
             printf("\nYour temperature in Celsius is: %.2f °C.", temperature);
 
             break;
-        }else if (unit == 'C')
+        }
+        else if (unit == 'C')
         {
             printf("\nEnter the temperature in Celsius: ");
             scanf("%f", &temperature);
@@ -36,13 +38,12 @@ int main(){
             printf("\nYour temperature in Farenheit is: %.2f °F.", temperature);
 
             break;
-        }else 
+        }
+        else
         {
             printf("%c is not a valid unit, please try it again: \n", unit);
         }
     }
-    
-
 
     return 0;
 }
