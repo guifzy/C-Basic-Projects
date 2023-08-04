@@ -10,17 +10,28 @@ int *pt1, *pt2, *pt3;
 pt1 = &a; // recebe espaço memoria de a 
 pt2 = &b; // recebe espaço memoria de b
 pt3 = &c; // recebe espaço memoria de c
-pt2 = pt1; // pt2 agora recebe os valores de pt1, ou seja, pt2 agora é igual a &a
-*pt3 = *pt2 + 2000; // o apontado de pt3 será igual ao apontado de pt2 + 2000, 2005
-pt1 = &v[8]; // pt1 agora recebe o espaço de memoria do vetor 'v' na posição 8, 80
+pt1 = pt2; // pt1 agora recebera o valor de pt2, ou seja, &b 
+pt3 = pt2; // pt3 agora recebera o valor de pt2, ou seja, &b
+*pt2 = *pt3 + 1000; // apontado de pt2 será igual ao apontado de pt3 + 1000, 1006
+pt1 = v; // pt1 agora recebe o valor do array 'v' no índice[0]
+pt1 = pt1 + 1; // pt1 agora será o valor de v no índice[1]
 
 for (int k=0; k<2; k++) { 
-*pt1 = *pt1 - 5; /* o apontado de pt1 agora será igual a -5 com isso se repetindo duas
-veses. */
+*pt1 = *pt1 /2; /* o apontado de pt1 agora será igual ao seu valor dividido por 2
+com isso se repetindo duas vezes */
 
-pt1 = pt1 - 3; /* pt1 agora será decrementado por -3, logo, pt1 que antes era igual ao
-espaço de memoria de v[8] agora será v[8] = 75, v[5] = 45 e terminará em v[2] = 20 */
+pt1 = pt1 + 4;  /* pt1 vai andar 4 posições no array saindo de v[1] = 5 para v[5] = 25 e 
+terminando em v[9] = 90 */
 }
 
+printf("%d ", c);
+
+/*
+for (int i = 0; i < sizeof(v)/sizeof(v[0]); i++)
+{
+    printf("%d ", pt1[i]);
+}
+printf("\n");
+*/
 return 0;
 }
