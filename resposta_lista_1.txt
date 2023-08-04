@@ -1,0 +1,144 @@
+Lista 1 sobre Ponteiros
+
+1) O que imprime o programa a seguir? Tente entendê-lo e responder. A seguir, execute-o e comprove o resultado.
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+int main()
+{
+int t, i, M[3][4];
+for (t=0; t<3; ++t)
+for (i=0; i<4; ++i)
+M[t][i] = (t*4)+i+1;
+for (t=0; t<3; ++t)
+{
+for (i=0; i<4; ++i)
+printf ("%3d ", M[t][i]);
+printf ("\n");
+}
+system (“pause”);
+return(0);
+}
+
+RESPOSTA: 
+O programa vai imprimir o resultado da Matriz 3 por 4 'M', onde os valores de cada coluna 
+vão ser multiplicados por 4 e em seguida os valores de cada linha vão ser somados com os 
+valores de i(0, 1, 2, 3), e por fim, tudo será somado em 1.
+
+1   2   3   4 
+5   6   7   8
+9  10  11  12
+
+
+2) Qual o valor de y no final do programa? Tente primeiro descobrir e depois verifique no computador o resultado. A seguir, escreva um /* comentário */ em cada comando de atribuição explicando o que ele faz e o valor da variável à esquerda do '=' após sua execução.
+
+RESPOSTA:
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+int main()
+{
+    int y, *p, x; // declaração das variaveis
+    y = 0; //atribuição de valor da variavel y
+    p = &y; //o ponteiro 'p' agora vale o espaço de memoria de 'y'
+    x = *p; // a variavel 'x' agora é igual ao valor do apontado de 'p', 0
+    x = 4; // a variavel 'x' agora vale 4
+    (*p)++; // o apontado de p agora será somado mais 1(*p++), logo valerá 1 
+    x; 
+    (*p) += x;// o valor do apontado de p agora será somado ao valor da variavel 'x'(4), logo valerá 5
+    printf ("y = %d\n", y); system ("pause"); // por fim, y = 5
+
+    return(0);
+}
+
+
+3) Qual o conteúdo final:
+a) Das variáveis a, b e c?
+b) Do vetor v?
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+int main(){
+int a=5, b=6, c=7;
+int v[10] = {0,10,20,30,40,50,60,70,80,90};
+int *pt1, *pt2, *pt3;
+pt1 = &a; 
+pt2 = &b;
+pt3 = &c; 
+pt1 = pt3; 
+pt2 = pt3; 
+*pt1 = *pt2 + *pt3; 
+pt1 = &v[3]; 
+for (int k=0; k<3; k++) { 
+*pt1 = *pt1+1000; 
+pt1 = pt1 + 2; 
+}
+} 
+
+
+4) Qual o conteúdo final:
+a) Das variáveis a, b e c?
+b) Do vetor v?
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+int main()
+{
+int a=5, b=6, c=7;
+int v[10] = {0,10,20,30,40,50,60,70,80,90};
+int *pt1, *pt2, *pt3;
+pt1 = &a; 
+pt2 = &b; 
+pt3 = &c; 
+pt2 = pt1; 
+*pt3 = *pt2 + 2000; 
+pt1 = &v[8]; 
+for (int k=0; k<2; k++) { 
+*pt1 = *pt1 - 5; 
+pt1 = pt1 - 3; 
+}
+}
+
+
+5) Qual o conteúdo final:
+a) Das variáveis a, b e c?
+b) Do vetor v?
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+int main()
+{
+int a=5, b=6, c=7;
+int v[10] = {0,10,20,30,40,50,60,70,80,90};
+int *pt1, *pt2, *pt3;
+pt1 = &a; 
+pt2 = &b; pt3 = &c; 
+pt1 = pt2; 
+pt3 = pt2;
+*pt2 = *pt3 + 1000; 
+pt1 = v; 
+pt1 = pt1 + 1; 
+for (int k=0; k<2; k++) { 
+*pt1 = *pt1 /2; 
+pt1 = pt1 + 4; 
+}
+}
+
+
+6) Explique o que faz este programa
+void main()
+{
+float vet[5] = {1.1, 2.2, 3.3, 4.4, 5.7};
+float *f;
+int i;
+f = vet;
+printf("contador / valor / valor / endereco/ endereco");
+for(i = 0 ; i <= 4 ; i++){
+printf("\ni = %d",i);
+printf(" vet[%d] = %.1f",i, vet[i]);
+printf(" *(f + %d) = %.1f",i, *(f+i));
+printf(" &vet[%d] = %X",i, &vet[i]);
+printf(" (f + %d) = %X\n",i, f+i);
+}
+system ("pause");
+}
