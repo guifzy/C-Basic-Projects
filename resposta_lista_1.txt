@@ -21,6 +21,7 @@ return(0);
 }
 
 RESPOSTA: 
+
 O programa vai imprimir o resultado da Matriz 3 por 4 'M', onde os valores de cada coluna 
 vão ser multiplicados por 4 e em seguida os valores de cada linha vão ser somados com os 
 valores de i(0, 1, 2, 3), e por fim, tudo será somado em 1.
@@ -33,6 +34,7 @@ valores de i(0, 1, 2, 3), e por fim, tudo será somado em 1.
 2) Qual o valor de y no final do programa? Tente primeiro descobrir e depois verifique no computador o resultado. A seguir, escreva um /* comentário */ em cada comando de atribuição explicando o que ele faz e o valor da variável à esquerda do '=' após sua execução.
 
 RESPOSTA:
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
@@ -61,6 +63,8 @@ c = 14
 b) Do vetor v?
 
 int v[10] = {0, 10, 20, 1030, 40, 1050, 60, 1070, 80, 90};
+
+CÓDIGO COMENTADO:
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -108,6 +112,8 @@ b) Do vetor v?
 
 int v[10] = {0,10,20,30,40,45,60,70,75,90};
 
+CÓDIGO COMENTADO:
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
@@ -147,6 +153,8 @@ b) Do vetor v?
 
 int v[10] = {0,5,20,30,40,25,60,70,80,90};
 
+CÓDIGO COMENTADO:
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
@@ -178,19 +186,37 @@ return 0;
 
 
 6) Explique o que faz este programa
+
+RESPOSTA:
+
+O código a seguir imprime os valores de cada índice e cada endereço de memoria de um
+array. Nele é usado um ponteiro que assume o valor das posições do array utilizando
+atribuição e um laço for. Sendo assim, possível imprimir os valores e os enderecos de
+memoria do array de forma tradicional e usando o ponteiro. 
+Segue a baixo o código comentado linha por linha:  
+
 void main()
 {
-float vet[5] = {1.1, 2.2, 3.3, 4.4, 5.7};
-float *f;
-int i;
-f = vet;
-printf("contador / valor / valor / endereco/ endereco");
-for(i = 0 ; i <= 4 ; i++){
-printf("\ni = %d",i);
-printf(" vet[%d] = %.1f",i, vet[i]);
-printf(" *(f + %d) = %.1f",i, *(f+i));
-printf(" &vet[%d] = %X",i, &vet[i]);
-printf(" (f + %d) = %X\n",i, f+i);
-}
-system ("pause");
+    float vet[5] = {1.1, 2.2, 3.3, 4.4, 5.7}; /* declaração de um array do tipo float */
+    float *f; /* declaração de um ponteiro do tipo float */
+    int i; /* declaração de uma variavel do tipo inteiro*/
+    f = vet; /* ponteiro f igual ao vetor 'vet' na posição[0] */
+
+    printf("contador / valor / valor / endereco/ endereco"); /* imprime a legenda dos
+    valores a seguir */
+    
+    for(i = 0 ; i <= 4 ; i++){/* laço for para percorrer os valores de 0 ate 4*/
+        printf("\ni = %d",i); /* imprime o valor do index 'i', que será incrementado
+        com +1 até 4 por conta do laço for */
+        printf(" vet[%d] = %.1f",i, vet[i]); /* imprime o valor de cada índice do vetor
+        com o uso da variavel 'i' para percorrer todos os índices do vetor */
+        printf(" *(f + %d) = %.1f",i, *(f+i)); /* imprime o apontado de f, que tem
+        valor igual a cada posição do vetor devido ao incremento de 'i' */
+        printf(" &vet[%d] = %X",i, &vet[i]); /* imprime o endereço de memoria de cada
+        índice do array em hexadecimal */
+        printf(" (f + %d) = %X\n",i, f+i); /* imprime o endereço de memoria de cada 
+        índice do array usando o ponteiro 'f', que tem valor igual ao índice[0] do
+        array incrementado com +1, de 0 até 4*/
+    }
+    system ("pause");
 }

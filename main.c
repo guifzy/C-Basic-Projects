@@ -1,37 +1,29 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
-int main()
+
+void main()
 {
-int a=5, b=6, c=7;
-int v[10] = {0,10,20,30,40,50,60,70,80,90};
-int *pt1, *pt2, *pt3;
+    float vet[5] = {1.1, 2.2, 3.3, 4.4, 5.7}; /* declaração de um array do tipo float */
+    float *f; /* declaração de um ponteiro do tipo float */
+    int i; /* declaração de uma variavel do tipo inteiro*/
+    f = vet; /* ponteiro f igual ao vetor 'vet' na posição[0] */
 
-pt1 = &a; // recebe espaço memoria de a 
-pt2 = &b; // recebe espaço memoria de b
-pt3 = &c; // recebe espaço memoria de c
-pt1 = pt2; // pt1 agora recebera o valor de pt2, ou seja, &b 
-pt3 = pt2; // pt3 agora recebera o valor de pt2, ou seja, &b
-*pt2 = *pt3 + 1000; // apontado de pt2 será igual ao apontado de pt3 + 1000, 1006
-pt1 = v; // pt1 agora recebe o valor do array 'v' no índice[0]
-pt1 = pt1 + 1; // pt1 agora será o valor de v no índice[1]
-
-for (int k=0; k<2; k++) { 
-*pt1 = *pt1 /2; /* o apontado de pt1 agora será igual ao seu valor dividido por 2
-com isso se repetindo duas vezes */
-
-pt1 = pt1 + 4;  /* pt1 vai andar 4 posições no array saindo de v[1] = 5 para v[5] = 25 e 
-terminando em v[9] = 90 */
-}
-
-printf("%d ", c);
-
-/*
-for (int i = 0; i < sizeof(v)/sizeof(v[0]); i++)
-{
-    printf("%d ", pt1[i]);
-}
-printf("\n");
-*/
-return 0;
+    printf("contador / valor / valor / endereco/ endereco"); /* imprime a legenda dos
+    valores a seguir */
+    
+    for(i = 0 ; i <= 4 ; i++){/* laço for para percorrer os valores de 0 ate 4*/
+        printf("\ni = %d",i); /* imprime o valor do index 'i', que será incrementado
+        com +1 até 4 por conta do laço for */
+        printf(" vet[%d] = %.1f",i, vet[i]); /* imprime o valor de cada índice do vetor
+        com o uso da variavel 'i' para percorrer todos os índices do vetor */
+        printf(" *(f + %d) = %.1f",i, *(f+i)); /* imprime o apontado de f, que tem
+        valor igual a cada posição do vetor devido ao incremento de 'i' */
+        printf(" &vet[%d] = %X",i, &vet[i]); /* imprime o endereço de memoria de cada
+        índice do array em hexadecimal */
+        printf(" (f + %d) = %X\n",i, f+i); /* imprime o endereço de memoria de cada 
+        índice do array usando o ponteiro 'f', que tem valor igual ao índice[0] do
+        array incrementado com +1, de 0 até 4*/
+    }
+    system ("pause");
 }
