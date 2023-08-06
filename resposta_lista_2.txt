@@ -1,0 +1,90 @@
+Segunda lista de exercícios de fixação de ponteiros
+
+1. O procedimento procedure(&i,&j) tem um problema. Identifique qual é?  Antes da chamada do método, temos a seguinte linha de comando: int i=6, j=10;
+void procedure(int *p, int *q){
+int *temp;
+*temp = *p;
+*p = *q;
+*q = *temp;
+}
+
+RESPOSTA
+
+O programa não irá funcionar pois o ponteiro 'temp' não recebe um endereço de memória para
+guardar as informações, para o programa funcionar seria necessario a criação de uma variavel
+e em seguida atribuir seu valor ao ponteiro, *temp = &x, ou seria necessario o uso da função
+'malloc()' que guarda um espaço na memória, int *temp = (int *)malloc(sizeof(int)).
+
+2. O que as linhas abaixo fazem? Faça o comentário de cada linha.
+
+int i=99,j; // declaração de duas variaveis do tipo inteiro, a primeira recebendo o valor 99
+e a outra sem valor determidado.
+int *p;  // declaração de um ponteiro do tipo inteiro chamado 'p'
+p = &i; // ponteiro 'p' recebe o endereço de memória de 'i'
+j = *p + 100; // variável 'j' recebe o valor do apontado de 'p' + 100 = 199
+
+3. O que as linhas abaixo fazem? Faça o comentário de cada linha.
+int a=5, b=12; // declaração de duas variáveis do tipo inteiro com valor 5 e 12
+int *p; // declaração de um ponteiro do tipo inteiro
+int *q; // declaração de um ponteiro do tipo inteiro
+p = &a; // o ponteiro 'p' recebe o endereço de memória de 'a'
+q = &b; // o ponteiro 'q' recebe o endereço de memória de 'b'
+int c = *p + *q; // declaração de uma variável do tipo inteiro que recebe os valores
+do apontado de 'p' + o apontado de 'q', sendo igual a 17
+
+4. O que as linhas abaixo fazem? Faça o comentário de cada linha.
+int i=7, j=3; // declaração de duas variáveis do tipo inteiro com valor 7 e 3
+int *p; // declaração de um ponteiro do tipo inteiro
+int **r; // declaração de um ponteiro de ponteiro do tipo inteiro
+p = &i; // ponteiro 'p' recebe o espaço de memória de 'i'
+r = &p; // ponteiro de ponteiro 'r' recebe o espaço de memória do ponteiro 'p'
+int c = **r + j; // declaração de uma variável do tipo inteiro que recebe o valor do
+apontado do apontado de 'r' + o valor de 'j' = 10
+
+5. Faça um programa onde seja criado um vetor vet com n inteiros, onde n é um valor inteiro fornecido pelo usuário. O vetor só deve ser alocado na memória depois que o usuário fornecer o valor de n.
+
+int main()
+{
+    int n; /* declaração da variavel do tamanho do vetor */
+    printf("digite o numro de posição do vetor: ");
+    scanf("%d", &n); /* guarda o valor do tamanho do vetor do espaço de memoria de 'n' */
+    int *vetor = (int *)malloc(sizeof(n * int)); /* aloca um espaço na memoria com tamanho 
+    de n */
+
+    printf("Digite os números do vetor: ");
+    for (int i = 0; i < n; i++) /* laço for para armazenar os valores no array, repetindo n vezes */
+    {
+        scanf("%d", &vetor[i]); 
+    }
+
+    free(vetor); /* libera o espaço alocado para melhor otimização da memoria */
+
+}
+
+6. Escreva um método que receba um vetor V com 10 inteiros armazenados. O método deve retornar o vetor V com o valor de cada posição multiplicado por 2. Os valores devem ser acessíveis fora do método.
+
+void multiPor2 (int *array, int tam) /* função que recebe os valores do vetor e tamanho do
+vetor, em seguida usa um ponteiro para tornar o resultado acessível fora da função */
+{
+    for (int i = 0; i < tam; i++)
+    {
+        array[i] *= 2;
+    }
+}
+
+int main ()
+{
+    int vet [10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    int tamanho = sizeof(vet) / sizeof(vet[0]); /* determina o tamanho do vetor */
+
+    multiPor2(vet, tamanho); /* envia os valores para função de multiplicação */
+
+    for (int i = 0; i < tamanho; i++)
+    {
+        printf("%d ", vet[i]);
+    }
+    
+    return 0;
+}
+
+7. Escreva um método que receba um vetor de inteiros e retorne o maior elemento e o menor elemento. Observe que o método deve retornar ao local da chamada os dois valores (não imprimir ao usuário). Portanto, você precisará usar passagem de parâmetro por referência, já que os métodos só podem retornar um único valor.
