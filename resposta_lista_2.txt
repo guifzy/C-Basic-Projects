@@ -88,3 +88,45 @@ int main ()
 }
 
 7. Escreva um método que receba um vetor de inteiros e retorne o maior elemento e o menor elemento. Observe que o método deve retornar ao local da chamada os dois valores (não imprimir ao usuário). Portanto, você precisará usar passagem de parâmetro por referência, já que os métodos só podem retornar um único valor.
+
+void maiorMenor (int *array, int tam, int *min, int *max)/* função para procurar o maior e menor
+com o uso de ponteiros para tornar o resultado acessível fora da função */
+{
+    *min = array[0];/* apontado de min recebe índice 0 do array */
+    *max = array[0];/* apontado de max recebe índice 0 do array */
+    for (int i = 1; i < tam; i++)
+    {
+        if (array[i] < *min)
+        {
+            *min = array[i];
+
+        }else if (array[i] > *max)
+        {
+            *max = array[i];
+        }
+        
+    }
+    
+}
+
+int main ()
+{
+    int min, max;
+    int vet [10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    int tamanho = sizeof(vet) / sizeof(vet[0]);
+
+    maiorMenor(vet, tamanho, &min, &max); /* envia os valores da lista, do tamanho da lista
+    e o endereço de memória de min e max */
+
+    for (int i = 0; i < tamanho; i++)
+    {
+        printf("%d ", vet[i]);
+    }
+
+    printf("\n");
+
+    printf("maior: %d\n", max);
+    printf("menor: %d\n", min);
+    
+    return 0;
+}
