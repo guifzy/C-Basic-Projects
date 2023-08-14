@@ -94,7 +94,7 @@ void maiorPontuacao()
     }
     printf("Funcionario com mais pontos:\n");
     printf("Nome do funcionario: %s\n", funcionarios[iMaior].nome);
-    printf("Pontuacao: %f\n", floor(maiorPontuacao));
+    printf("Pontuacao: %.0f\n", floor(maiorPontuacao));
 }
 
 void verificarVendas()

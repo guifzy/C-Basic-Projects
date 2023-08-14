@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
-#include <math.h>
 
 typedef struct
 {
@@ -66,10 +65,11 @@ void calcularPontos()
             funcionarios[i].pontos[j] = funcionarios[i].vendas[j] / 1000 * 1;
             somaVendas += funcionarios[i].vendas[j];
             somaPontos += funcionarios[i].pontos[j];
-            printf("\nNo mes[%d]: %.2f", j + 1, funcionarios[i].pontos[j]);
+            printf("\nNo mes[%d]: %.0f", j + 1, funcionarios[i].pontos[j]);
         }
-        printf("\nPontos totais do funcionario %s->%.2f", funcionarios[i].nome, somaPontos);
+        printf("\nPontos totais do funcionario %s->%.0f", funcionarios[i].nome, somaPontos);
         printf("\nTotal vendido: R$%.2f \n", somaVendas);
+        
     }
 }
 
@@ -82,7 +82,7 @@ void maiorPontuacao()
     {
         float pontosTotais = 0.0;
         for (int j = 0; j < 3; j++)
-        {
+        {            
             pontosTotais += funcionarios[i].pontos[j];
         }
 
@@ -94,7 +94,7 @@ void maiorPontuacao()
     }
     printf("Funcionario com mais pontos:\n");
     printf("Nome do funcionario: %s\n", funcionarios[iMaior].nome);
-    printf("Pontuacao: %f\n", floor(maiorPontuacao));
+    printf("Pontuacao: %.0f\n", maiorPontuacao);
 }
 
 void verificarVendas()
@@ -159,7 +159,7 @@ int main()
             printf("\nDigite um numero valido!");
             break;
         }
-    } while (verifica != 4);
+    } while (verifica != 5);
 
     return 0;
 }
